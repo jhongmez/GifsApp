@@ -39,6 +39,10 @@ export class GifsService {
 	private loadLocalStorage(): void {
 		if( !localStorage.getItem('history') ) return;
 		this._tagsHistory = JSON.parse( localStorage.getItem('history')! );
+
+		if( this._tagsHistory.length === 0 ) return;
+		// * llamamos el searchTag y le pasamos la primera posicion del array
+		this.searchTag( this._tagsHistory[0] );
 	}
 	
 	public searchTag( tag: string ): void {
